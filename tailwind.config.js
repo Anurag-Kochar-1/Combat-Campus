@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const { fontFamily } = require("tailwindcss/defaultTheme")
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -6,7 +9,19 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        brand: "#22C55E",
+        dark: "#0F172A",
+        mid: "#ABB8C9",
+        light: "#FAFAFA"
+      },
+
+      fontFamily: {
+        montserrat: ['var(--font-montserrat)', ...fontFamily.sans],
+        open_sans: ['var(--font-open_sans)', ...fontFamily.sans],
+      }
+    },
   },
   plugins: [],
 }
