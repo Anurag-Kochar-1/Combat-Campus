@@ -9,6 +9,7 @@ import { AppContext, IAppContextType } from "@/context/AppContext"
 import Link from "next/link"
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx"
 import HamBurgerMenu from "../HamBurgerMenu/HamBurgerMenu"
+import ProfileCard from "../ProfileCard/ProfileCard"
 
 const NavBar = () => {
   const { userDetails } = useContext<IAppContextType>(AppContext)
@@ -44,10 +45,12 @@ const NavBar = () => {
         ) : (
           <RxCross1 className='lg:hidden w-6 h-6 text-Dark hover:cursor-pointer' onClick={() => setIsHamBurgerMenuVisible(!isHamBurgerMenuVisible)} />
         )}
+
+        <ProfileCard />
       </div>
+
+
       <HamBurgerMenu isHamBurgerMenuVisible={isHamBurgerMenuVisible} setIsHamBurgerMenuVisible={setIsHamBurgerMenuVisible} />
-
-
     </header>
   )
 }

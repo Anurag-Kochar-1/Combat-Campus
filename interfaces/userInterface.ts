@@ -1,10 +1,6 @@
 export interface IUserDetails {
-    userName: string
-    userDisplayPicture: string
-    userEmail: string
-    userID: string
-    userProfileBanner: string
-    completedLessonsID: []
-    userCoins: number
-    appName: string
+    userName: string | null
+    uid: string | null
+    displayPicture: string | null
+    email: string | null
 }
