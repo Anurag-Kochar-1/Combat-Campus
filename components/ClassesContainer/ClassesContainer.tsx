@@ -12,7 +12,7 @@ function ClassesContainer({ classes }: { classes: any }) {
         <section className='w-full flex flex-wrap justify-center items-center my-10'>
 
             {classes && classes?.map((classObject: any) => {
-                return <ClassCard classObject={classObject} />
+                return <ClassCard key={classObject?.classID} classObject={classObject} />
             })}
         </section>
     )
