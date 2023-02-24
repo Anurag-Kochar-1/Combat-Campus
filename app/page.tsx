@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from './page.module.css'
+import NavBar from '@/components/NavBar/NavBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <main>
-      <h1 className='text-4xl font-bold text-green-300'> Bharat </h1>
+      <NavBar />
 
     </main>
   )

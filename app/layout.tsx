@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={` ${montserrat.variable} ${open_sans.variable} `}>
       <body>
-        <NavBar />
         {children}
       </body>
     </html>
