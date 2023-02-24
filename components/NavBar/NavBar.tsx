@@ -1,11 +1,22 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Image from 'next/image'
-import React from 'react'
 import logo from "../../public/images/logos/logo.png"
 import Button from '../Button/Button'
+import { onAuthChanged, SignInWithGoogleFunction, signOutUser } from "@/service/Auth/AuthService"
 
 const NavBar = () => {
+
+  const [authState, setAuthState] = useState<boolean>(false)
+
+  useEffect(() => {
+    onAuthChanged(user => {
+      setAuthState(!!user)
+    })
+  }, [])
+
+
   return (
     <header className='w-full h-20 bg-gray-100 px-5 flex justify-between items-center'>
       <div className='flex justify-center items-center space-x-3'>
@@ -22,9 +33,11 @@ const NavBar = () => {
 
       <Button
         onClick={() => {
+          !authState ? SignInWithGoogleFunction() : signOutUser() 
+          console.log(authState)
         }}
       >
-        Sign in
+        {authState ? "Log out" : "Sign in"}
       </Button>
     </header>
   )
