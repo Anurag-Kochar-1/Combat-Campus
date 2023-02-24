@@ -1,14 +1,26 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
 import NavBar from '@/components/NavBar/NavBar'
+import ClassesContainer from '@/components/ClassesContainer/ClassesContainer'
+import { collection, doc, getDocs } from 'firebase/firestore'
+import { db } from '@/firebaseConfig'
 
-const inter = Inter({ subsets: ['latin'] })
+async function getClasses() {
+  const classesCollectionRef = collection(db, `/subjects/indianArmy1/classes`)
+  const res = await getDocs(classesCollectionRef)
+  const data: any[] = res?.docs?.map(doc => doc.data())
+  console.log(data)
+  return data
 
-export default function Home() {
+}
+
+export default async function Home() {
+  const classes = await getClasses()
+  
+
   return (
     <main>
       <NavBar />
+      <ClassesContainer classes={classes} />
 
     </main>
   )

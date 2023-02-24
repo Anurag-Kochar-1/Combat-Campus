@@ -1,20 +1,23 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import Image from 'next/image'
 import logo from "../../public/images/logos/logo.png"
 import Button from '../Button/Button'
 import { onAuthChanged, SignInWithGoogleFunction, signOutUser } from "@/service/Auth/AuthService"
+import { AppContext, IAppContextType } from "@/context/AppContext"
 
 const NavBar = () => {
 
   const [authState, setAuthState] = useState<boolean>(false)
+  const { userDetails } = useContext<IAppContextType>(AppContext)
 
-  useEffect(() => {
-    onAuthChanged(user => {
-      setAuthState(!!user)
-    })
-  }, [])
+  // useEffect(() => {
+  //   onAuthChanged(user => {
+  //     setAuthState(!!user)
+  //     console.log(user)
+  //   })
+  // }, [authState])
 
 
   return (
@@ -27,18 +30,20 @@ const NavBar = () => {
           height={200}
           className="h-12 w-12"
         />
-        <h1 className='font-montserrat font-bold text-2xl text-brand'> Bharat Shakti Verse </h1>
+        <h1 className='hidden sm:inline-block font-montserrat font-bold text-2xl text-brand'> Bharat Shakti Verse </h1>
       </div>
 
 
       <Button
         onClick={() => {
-          !authState ? SignInWithGoogleFunction() : signOutUser() 
+          !userDetails ? SignInWithGoogleFunction() : signOutUser()
           console.log(authState)
         }}
       >
-        {authState ? "Log out" : "Sign in"}
+        {userDetails ? "Log out" : "Sign in"}
       </Button>
+
+
     </header>
   )
 }

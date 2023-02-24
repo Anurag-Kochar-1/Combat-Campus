@@ -1,6 +1,11 @@
 import './globals.css'
+import { useEffect, useContext } from "react"
 import NavBar from '@/components/NavBar/NavBar'
 import { Montserrat, Open_Sans } from "next/font/google"
+import { onAuthChanged } from '@/service/Auth/AuthService'
+import AppContextProvider, { AppContext, IAppContextType } from '@/context/AppContext'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '@/firebaseConfig'
 
 export const metadata = {
   title: 'Create Next App',
@@ -24,11 +29,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+
   return (
-    <html lang="en" className={` ${montserrat.variable} ${open_sans.variable} `}>
+
+    <html lang="en" className={` ${montserrat.variable} ${open_sans.variable} `
+    }>
       <body>
-        {children}
+        <AppContextProvider>
+          {children}
+        </AppContextProvider>
       </body>
-    </html>
+    </html >
   )
 }

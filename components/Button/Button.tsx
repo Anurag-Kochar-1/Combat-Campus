@@ -11,7 +11,7 @@ const Button = ({ children, onClick }: IButtonProps) => {
             type='button'
             title={children}
             onClick={onClick}
-            className="min-w-min h-10 px-5 font-open_sans text-white text-base font-semibold bg-brand rounded-md hover:bg-white hover:text-brand hover:border-2 hover:border-brand"
+            className="min-w-[20px] h-10 px-5 font-open_sans text-white text-base font-semibold bg-brand rounded-md hover:bg-white hover:text-brand hover:border-2 hover:border-brand"
         >
             {children}
         </button>
