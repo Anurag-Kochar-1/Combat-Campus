@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useContext } from 'react'
+import { AiOutlineLogout } from "react-icons/ai"
 import { AppContext } from '@/context/AppContext'
 import Image from 'next/image'
 import { signOutUser } from '@/service/Auth/AuthService'
@@ -16,25 +17,24 @@ const ProfileCard = () => {
                     alt="dp"
                     width={150}
                     height={150}
-                    className="w-12 h-12 rounded-full"
+                    className="w-9 h-9 rounded-full"
                 />
             )}
-
-            <div className='flex flex-col items-center justify-start'>
-                <p> {userDetails?.userName} </p>
-                <span
-                    onClick={() => {
-                        signOutUser()
-                        setuserDetails({
-                            isUser: false,
-                            userName: null,
-                            uid: null,
-                            displayPicture: null,
-                            email: null
-                        })
-                    }}
-                > Log out </span>
-            </div>
+            <p className='font-open_sans text-base font-medium'> {userDetails?.userName} </p>
+            <AiOutlineLogout
+                size={"1.2rem"}
+                className="text-red-600 cursor-pointer"
+                onClick={() => {
+                    signOutUser()
+                    setuserDetails({
+                        isUser: false,
+                        userName: null,
+                        uid: null,
+                        displayPicture: null,
+                        email: null
+                    })
+                }}
+            />
         </div>
     )
 }
