@@ -11,8 +11,9 @@ export interface IAppContextType {
     setuserDetails: React.Dispatch<React.SetStateAction<IUserDetails>>
 }
 
-const defaultState = {
+export const defaultState = {
     userDetails: {
+        isUser: false,
         userName: null,
         uid: null,
         displayPicture: null,
@@ -28,6 +29,7 @@ export const AppContext = createContext(defaultState)
 
 const AppContextProvider = ({ children }: { children: ReactNode }) => {
     const [userDetails, setuserDetails] = useState<IUserDetails>({
+        isUser: false,
         userName: null,
         uid: null,
         displayPicture: null,
@@ -37,8 +39,9 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         console.log(`useEffect hook running from AppContext.tsx`)
         const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-            // console.log("Auth", currentuser);
+            console.log("currentuser ==> ", currentuser);
             if (currentuser?.uid) setuserDetails({
+                isUser: true,
                 userName: currentuser?.displayName,
                 uid: currentuser?.uid,
                 displayPicture: currentuser?.photoURL,

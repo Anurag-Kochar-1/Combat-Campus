@@ -3,11 +3,13 @@
 interface IButtonProps {
     children: string
     onClick: () => void
+    hidden?: boolean
 }
 
-const Button = ({ children, onClick }: IButtonProps) => {
+const Button = ({ children, onClick, hidden }: IButtonProps) => {
     return (
         <button
+            hidden={hidden}
             type='button'
             title={children}
             onClick={onClick}

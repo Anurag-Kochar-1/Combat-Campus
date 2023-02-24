@@ -1,9 +1,13 @@
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth"
 import { auth, db } from "../../firebaseConfig"
 import { doc, getDoc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
+import { AppContext, IAppContextType } from "@/context/AppContext"
+import { useContext } from "react"
 
 
 export async function SignInWithGoogleFunction() {
+    
+
     const googleProvider = new GoogleAuthProvider()
 
     try {

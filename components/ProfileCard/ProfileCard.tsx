@@ -1,9 +1,13 @@
+"use client"
+
+import React, { useContext } from 'react'
 import { AppContext } from '@/context/AppContext'
 import Image from 'next/image'
-import React, { useContext } from 'react'
+import { signOutUser } from '@/service/Auth/AuthService'
 
 const ProfileCard = () => {
-    const { userDetails } = useContext(AppContext)
+    const { userDetails, setuserDetails } = useContext(AppContext)
+
     return (
         <div className='flex justify-center items-center space-x-3'>
             {userDetails.displayPicture && (
@@ -15,6 +19,22 @@ const ProfileCard = () => {
                     className="w-12 h-12 rounded-full"
                 />
             )}
+
+            <div className='flex flex-col items-center justify-start'>
+                <p> {userDetails?.userName} </p>
+                <span
+                    onClick={() => {
+                        signOutUser()
+                        setuserDetails({
+                            isUser: false,
+                            userName: null,
+                            uid: null,
+                            displayPicture: null,
+                            email: null
+                        })
+                    }}
+                > Log out </span>
+            </div>
         </div>
     )
 }

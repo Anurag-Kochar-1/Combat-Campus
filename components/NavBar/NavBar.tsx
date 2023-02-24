@@ -33,11 +33,12 @@ const NavBar = () => {
 
       <div className="flex justify-end items-center space-x-2">
         <Button
+          hidden={userDetails?.isUser}
           onClick={() => {
-            !userDetails ? SignInWithGoogleFunction() : signOutUser()
+            SignInWithGoogleFunction()
           }}
         >
-          {userDetails ? "Log out" : "Sign in"}
+          Sign in
         </Button>
 
         {!isHamBurgerMenuVisible ? (
@@ -46,7 +47,7 @@ const NavBar = () => {
           <RxCross1 className='lg:hidden w-6 h-6 text-Dark hover:cursor-pointer' onClick={() => setIsHamBurgerMenuVisible(!isHamBurgerMenuVisible)} />
         )}
 
-        <ProfileCard />
+        {userDetails?.isUser && <ProfileCard />}
       </div>
 
 
