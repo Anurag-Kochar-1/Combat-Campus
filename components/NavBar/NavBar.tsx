@@ -11,6 +11,7 @@ import { RxHamburgerMenu, RxCross1 } from "react-icons/rx"
 import HamBurgerMenu from "../HamBurgerMenu/HamBurgerMenu"
 import ProfileCard from "../ProfileCard/ProfileCard"
 import Wallet from "../Wallet/Wallet"
+import { useRouter } from "next/navigation"
 
 interface IProps {
   place: string
@@ -20,7 +21,7 @@ interface IProps {
 const NavBar = ({ place }: IProps) => {
   const { userDetails, isTrainingModelOpen, setIsTrainingModelOpen } = useContext<IAppContextType>(AppContext)
   const [isHamBurgerMenuVisible, setIsHamBurgerMenuVisible] = useState<boolean>(false)
-
+  const router = useRouter()
 
 
   return (
@@ -50,12 +51,12 @@ const NavBar = ({ place }: IProps) => {
           </Button>
         )}
 
-        {/* <Wallet /> */}
+        <Wallet />
 
         <Button
           className="hidden md:inline-block"
           onClick={() => {
-            console.log(`first`)
+            router.push(`/shop`)
           }}
         >
           Shop
