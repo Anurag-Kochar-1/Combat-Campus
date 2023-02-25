@@ -13,13 +13,14 @@ async function getClasses() {
 
 }
 
+
 export default async function Home() {
   const classes = await getClasses()
 
 
   return (
     <main>
-      <NavBar />
+      <NavBar place='home'/>
       <ClassesContainer classes={classes} />
     </main>
   )

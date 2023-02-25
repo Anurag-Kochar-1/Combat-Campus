@@ -6,9 +6,8 @@ const ClassCard = ({ classObject }: { classObject: any }) => {
   return (
     <Link
       href={`/class/JD7UPZr1r7pR6YyKxHjL`}
-      className='w-52 h-52 relative rounded-md bg-brand m-2'>
+      className='w-52 h-52 relative rounded-md bg-brand m-2 flex justify-start items-end'>
 
-      {/* <h3> {classObject?.className} </h3> */}
       {classObject?.classLogos && (
         <Image
           src={classObject?.classLogos[Math.floor(Math.random() * 2)]}
@@ -19,6 +18,7 @@ const ClassCard = ({ classObject }: { classObject: any }) => {
           draggable="false"
         />
       )}
+      <h3> {classObject?.className} </h3>
     </Link>
   )
 }
