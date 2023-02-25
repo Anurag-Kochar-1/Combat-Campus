@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBg85sQramadXnUaoZ_oXGKdYVc7ylGGVI",
-    authDomain: "metaverse-1.firebaseapp.com",
-    projectId: "metaverse-1",
-    storageBucket: "metaverse-1.appspot.com",
-    messagingSenderId: "65426224873",
-    appId: "1:65426224873:web:dcd942961c5889d9076278"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY || 'mock_key',
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTHDOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APPID
 };
 
 const app = initializeApp(firebaseConfig);
