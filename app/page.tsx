@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import NavBar from '@/components/NavBar/NavBar'
 import ClassesContainer from '@/components/ClassesContainer/ClassesContainer'
-import { collection, doc, getDocs, orderBy, query } from 'firebase/firestore'
+import { collection, doc, getDocs, limit, orderBy, query } from 'firebase/firestore'
 import { db } from '@/firebaseConfig'
 import Leaderboard from '@/components/Leaderboard/Leaderboard'
 
@@ -14,7 +14,7 @@ async function getClasses() {
 }
 
 async function getLeaderboardData() {
-  const leaderboardQuery = query(collection(db, 'users'), orderBy("userCoins", "asc"))
+  const leaderboardQuery = query(collection(db, 'users'), orderBy("userCoins", "desc"), limit(20))
   const res = await getDocs(leaderboardQuery)
   const data = res?.docs?.map(doc => doc.data())
   return data
@@ -27,7 +27,7 @@ export default async function Home() {
 
 
   return (
-    <main className='w-full flex flex-col items-center justify-start'>
+    <main className='w-full mt-[5rem] flex flex-col items-center justify-start'>
       <NavBar place='home' />
       <ClassesContainer classes={classes} />
       <Leaderboard leaderBoardData={leaderBoardData} />

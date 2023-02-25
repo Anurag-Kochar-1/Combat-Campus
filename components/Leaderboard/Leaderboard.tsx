@@ -8,18 +8,27 @@ const Leaderboard = ({ leaderBoardData }: { leaderBoardData: any }) => {
             <h3 className='text-4xl text-black font-montserrat font-bold text-center'>Bharat ke Top Learners</h3>
             <SearchBar />
 
-            <div className='w-full flex flex-col justify-start items-center'>
+
+
+            <div className='w-full flex flex-col justify-start items-center my-10'>
+                <div className='w-full bg-brand md:w-[60%] flex justify-between items-center p-4 m-2 rounded-lg text-center'>
+                    <span className='font-bold text-xl font-montserrat text-white'> DP </span>
+                    <span className='font-bold text-xl font-montserrat text-white'> Name </span>
+                    <span className='font-bold text-xl font-montserrat text-white'> Coins </span>
+                </div>
                 {leaderBoardData && leaderBoardData?.map((user: any) => {
                     return (
-                        <div key={user?.userID} className='w-full flex justify-between items-center p-2 m-2'>
+                        <div
+                            key={user?.userID}
+                            className='w-full md:w-[60%] flex justify-between items-center text-center p-4 m-2 border-2 border-brand rounded-lg'>
                             <Image
                                 src={user?.displayPicture as string}
                                 alt="dp"
                                 width={150}
                                 height={150}
-                                className="w-9 h-9 rounded-full"
+                                className="hidden sm:inline-block w-9 h-9 rounded-full"
                             />
-                            <p> {user?.userName} </p>
+                            <p className='font-open_sans text-base font-medium text-black'> {user?.userName} </p>
 
                             <div className='flex justify-start items-center space-x-1'>
                                 <span> {user?.userCoins} Bharat Coins </span>
