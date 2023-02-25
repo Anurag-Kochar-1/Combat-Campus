@@ -2,7 +2,7 @@
 
 interface IButtonProps {
     children: string
-    onClick: () => void
+    onClick?: () => void
     hidden?: boolean
     className?: string
 }

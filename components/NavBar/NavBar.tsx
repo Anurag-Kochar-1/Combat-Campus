@@ -10,6 +10,7 @@ import Link from "next/link"
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx"
 import HamBurgerMenu from "../HamBurgerMenu/HamBurgerMenu"
 import ProfileCard from "../ProfileCard/ProfileCard"
+import Wallet from "../Wallet/Wallet"
 
 interface IProps {
   place: string
@@ -17,7 +18,7 @@ interface IProps {
 }
 
 const NavBar = ({ place }: IProps) => {
-  const { userDetails } = useContext<IAppContextType>(AppContext)
+  const { userDetails, isTrainingModelOpen, setIsTrainingModelOpen } = useContext<IAppContextType>(AppContext)
   const [isHamBurgerMenuVisible, setIsHamBurgerMenuVisible] = useState<boolean>(false)
 
 
@@ -42,21 +43,14 @@ const NavBar = ({ place }: IProps) => {
           <Button
             className="hidden md:inline-block"
             onClick={() => {
-              console.log(`first`)
+              setIsTrainingModelOpen(!isTrainingModelOpen)
             }}
           >
             Start Your Training !!!
           </Button>
         )}
 
-        <Button
-          className="hidden md:inline-block"
-          onClick={() => {
-            console.log(`first`)
-          }}
-        >
-          Wallet
-        </Button>
+        {/* <Wallet /> */}
 
         <Button
           className="hidden md:inline-block"

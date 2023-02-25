@@ -9,6 +9,8 @@ import { createContext, ReactNode, useState, useEffect } from 'react'
 export interface IAppContextType {
     userDetails: IUserDetails
     setuserDetails: React.Dispatch<React.SetStateAction<IUserDetails>>
+    isTrainingModelOpen: boolean
+    setIsTrainingModelOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const defaultState = {
@@ -19,7 +21,10 @@ export const defaultState = {
         displayPicture: null,
         email: null
     },
-    setuserDetails: () => { }
+    setuserDetails: () => { },
+    isTrainingModelOpen: false,
+    setIsTrainingModelOpen: () => {}
+
 } as IAppContextType
 
 
@@ -35,6 +40,8 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
         displayPicture: null,
         email: null
     })
+
+    const [isTrainingModelOpen, setIsTrainingModelOpen] = useState <boolean> (false)
 
     useEffect(() => {
         console.log(`useEffect hook running from AppContext.tsx`)
@@ -60,7 +67,9 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
         <AppContext.Provider
             value={{
                 userDetails,
-                setuserDetails
+                setuserDetails,
+                isTrainingModelOpen,
+                setIsTrainingModelOpen
             }}
         >
             {children}

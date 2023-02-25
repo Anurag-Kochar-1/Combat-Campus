@@ -1,12 +1,27 @@
+"use client"
+
+import { AppContext } from '@/context/AppContext'
+import { SignInWithGoogleFunction } from '@/service/Auth/AuthService'
 import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/navigation'
+import React, { useContext } from 'react'
 
 const ClassCard = ({ classObject }: { classObject: any }) => {
+  const { userDetails } = useContext(AppContext)
+  const rotuer = useRouter()
+
   return (
-    <Link
-      href={`/class/JD7UPZr1r7pR6YyKxHjL`}
-      className='w-52 h-52 relative rounded-md bg-brand m-2 flex justify-start items-end hover:scale-105'>
+    <div
+      onClick={() => {
+        if (userDetails.uid !== null) {
+          rotuer.push(`/class/JD7UPZr1r7pR6YyKxHjL`)
+        } else {
+          SignInWithGoogleFunction()
+          rotuer.push(`/class/JD7UPZr1r7pR6YyKxHjL`)
+        }
+
+      }}
+      className='w-52 h-52 relative rounded-md bg-brand m-2 flex justify-start items-end hover:scale-105 hover:cursor-pointer'>
 
       {classObject?.classLogos && (
         <Image
@@ -19,7 +34,7 @@ const ClassCard = ({ classObject }: { classObject: any }) => {
         />
       )}
       <h3 className='z-10 text-white font-semibold font-montserrat text-2xl p-4'> {classObject?.className} </h3>
-    </Link>
+    </div>
   )
 }
 

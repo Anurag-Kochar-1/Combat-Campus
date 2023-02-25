@@ -92,8 +92,6 @@ export const TrainingModelQuestions = {
 
             ]
         },
-
-        
         {
             "prompt": "The PKM was designed to replace which machine guns ?",
             "answer": "option C",

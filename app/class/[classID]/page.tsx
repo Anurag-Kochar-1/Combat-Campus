@@ -18,11 +18,12 @@ const getClassDetails = async () => {
 async function page() {
   const classData = await getClassDetails()
 
+
   return (
-    <div>
+    <div className='w-full h-screen flex flex-col items-center justify-start'>
       <NavBar place='class' />
       <iframe
-        className='h-[calc(100vh-5rem)] w-full'
+        className='h-[calc(100vh-5rem)] mt-[5rem] w-full'
         width="100%"
         src={classData?.classMetaverseID}
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; microphone; camera; display-capture; xr-spatial-tracking; xr;"

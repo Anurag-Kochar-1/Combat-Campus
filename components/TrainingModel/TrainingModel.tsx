@@ -3,12 +3,13 @@ import { AppContext } from '@/context/AppContext'
 import { db } from '@/firebaseConfig'
 import { doc, getDoc, increment, updateDoc } from 'firebase/firestore'
 import React, { useContext, useEffect, useState } from 'react'
+import { toast, Toaster } from 'react-hot-toast'
 import { IoCloseSharp } from "react-icons/io5"
 import { TrainingModelQuestions } from "../../constants/TrainingModelQuestions/TrainingModelQuestions"
 
 
-const TrainingModel = (  ) => {
-    const { userDetails } = useContext(AppContext)
+const TrainingModel = () => {
+    const { userDetails, isTrainingModelOpen, setIsTrainingModelOpen } = useContext(AppContext)
     const [isTestModalOpen, setIsTestModalOpen] = useState<boolean>(false)
     const [trainingTestData, setTrainingTestData] = useState<any | null>(null)
     const [timer, setTimer] = useState<number>(60)
@@ -27,7 +28,7 @@ const TrainingModel = (  ) => {
 
 
     const nextQuestion = () => {
-        if (trainingTestData?.questions[currentQuestionNumber].answer == optionChosen) {
+        if (TrainingModelQuestions?.questions[currentQuestionNumber].answer == optionChosen) {
             setScore(score + 1);
             setTimer(100)
             setCurrentQuestionNumber(currentQuestionNumber + 1);
@@ -36,16 +37,25 @@ const TrainingModel = (  ) => {
 
         setCurrentQuestionNumber(currentQuestionNumber + 1);
         setOptionChosen("")
+
+
+
     }
     const finishTest = async () => {
-        if (trainingTestData?.questions[currentQuestionNumber].answer == optionChosen) {
+        if (TrainingModelQuestions?.questions[currentQuestionNumber].answer == optionChosen) {
             setScore(score + 1);
             setTimer(0)
         }
 
-        setIsTestModalOpen(false)
+        setIsTrainingModelOpen(false)
         setTimer(0)
         setIsTestCompleted(true)
+
+        const notify = () => toast(`${score * 50} Coins Rewarded`, {
+            duration: 4000,
+            icon: '👏',
+        });
+        notify()
 
 
 
@@ -82,13 +92,18 @@ const TrainingModel = (  ) => {
 
     return (
         <>
-            {isTestModalOpen && (
+            <Toaster
+                position="bottom-center"
+                reverseOrder={false}
+            />
+
+            {isTrainingModelOpen && (
                 <div className='z-50 fixed inset-0 w-full h-full bg-black flex justify-center items-center'>
                     <div className='z-30 w-[90%] h-[80vh] lg:w-[80%] lg:h-[80vh] bg-light rounded-md flex flex-col items-center justify-start overflow-x-hidden overflow-y-scroll'>
                         <div className='w-full h-16 flex justify-between items-center bg-brand rounded-tr-md rounded-tl-md px-5'>
                             <span> {null} </span>
                             <p className='text-xl text-white font-nunito font-semibold'> Timer : {`${timer} seconds`} </p>
-                            <IoCloseSharp size={"1.5rem"} onClick={() => setIsTestModalOpen(false)} className="text-red-500 hover:cursor-pointer" />
+                            <IoCloseSharp size={"1.5rem"} onClick={() => setIsTrainingModelOpen(false)} className="text-red-500 hover:cursor-pointer" />
                         </div>
 
                         <div className='w-full h-full flex flex-col items-center justify-between py-10'>
@@ -120,7 +135,7 @@ const TrainingModel = (  ) => {
                                         onClick={finishTest}
                                         type='button'
                                         title='submitBtn'
-                                        className=' outline-none border-none w-28 h-10 bg-Brand text-white font-nunito font-semibold text-base rounded-md'>
+                                        className=' outline-none border-none w-28 h-10 bg-brand text-white font-nunito font-semibold text-base rounded-md'>
                                         Submit
                                     </button>
                                 ) : (
@@ -130,7 +145,7 @@ const TrainingModel = (  ) => {
                                         }}
                                         type='button'
                                         title='next'
-                                        className=' outline-none border-none w-28 h-10 bg-Brand text-white font-nunito font-semibold text-base rounded-md'>
+                                        className=' outline-none border-none w-28 h-10 bg-brand text-white font-nunito font-semibold text-base rounded-md'>
                                         Next
                                     </button>
                                 )}
