@@ -3,6 +3,17 @@ import React from 'react'
 import { toast, Toaster } from 'react-hot-toast';
 
 const ProductCard = ({ product }: { product: any }) => {
+
+
+
+
+
+
+
+
+
+
+    
     return (
         <>
             <Toaster
