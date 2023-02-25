@@ -11,7 +11,7 @@ const Leaderboard = ({ leaderBoardData }: { leaderBoardData: any }) => {
             <div className='w-full flex flex-col justify-start items-center'>
                 {leaderBoardData && leaderBoardData?.map((user: any) => {
                     return (
-                        <div className='w-full flex justify-between items-center p-2 m-2'>
+                        <div key={user?.userID} className='w-full flex justify-between items-center p-2 m-2'>
                             <Image
                                 src={user?.displayPicture as string}
                                 alt="dp"
