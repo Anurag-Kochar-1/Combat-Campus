@@ -19,7 +19,7 @@ export async function SignInWithGoogleFunction() {
         else if (!userDoc.exists()) {
             await setDoc(doc(db, 'users', res?.user?.uid), {
                 userName: res?.user?.displayName,
-                res: res?.user?.photoURL,
+                displayPicture: res?.user?.photoURL,
                 userEmail: res?.user?.email,
                 userID: res?.user?.uid,
 

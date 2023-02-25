@@ -14,6 +14,7 @@ const getClassDetails = async () => {
 
 
 
+
 async function page() {
   const classData = await getClassDetails()
 

@@ -9,7 +9,7 @@ import { TrainingModelQuestions } from "../../constants/TrainingModelQuestions/T
 
 const TrainingModel = (  ) => {
     const { userDetails } = useContext(AppContext)
-    const [isTestModalOpen, setIsTestModalOpen] = useState<boolean>(true)
+    const [isTestModalOpen, setIsTestModalOpen] = useState<boolean>(false)
     const [trainingTestData, setTrainingTestData] = useState<any | null>(null)
     const [timer, setTimer] = useState<number>(60)
     const [currentQuestionNumber, setCurrentQuestionNumber] = useState<number>(0);
