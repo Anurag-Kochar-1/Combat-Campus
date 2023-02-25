@@ -6,11 +6,11 @@ import { AppContext } from '@/context/AppContext'
 import Image from 'next/image'
 import { signOutUser } from '@/service/Auth/AuthService'
 
-const ProfileCard = () => {
+const ProfileCard = ( {place}: {place: string} ) => {
     const { userDetails, setuserDetails } = useContext(AppContext)
 
     return (
-        <div className='flex justify-center items-center space-x-3'>
+        <div className={`${place == "navbar" && "hidden md:inline-flex"} flex justify-center items-center space-x-3`}>
             {userDetails.displayPicture && (
                 <Image
                     src={userDetails?.displayPicture as string}

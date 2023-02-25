@@ -33,6 +33,25 @@ const NavBar = () => {
 
       <div className="flex justify-end items-center space-x-2">
         <Button
+        className="hidden md:inline-block"
+          onClick={() => {
+            console.log(`first`)
+          }}
+        >
+          Wallet
+        </Button>
+
+        <Button
+        className="hidden md:inline-block"
+          onClick={() => {
+            console.log(`first`)
+          }}
+        >
+          Shop
+        </Button>
+
+
+        <Button
           hidden={userDetails?.isUser}
           onClick={() => {
             SignInWithGoogleFunction()
@@ -42,12 +61,12 @@ const NavBar = () => {
         </Button>
 
         {!isHamBurgerMenuVisible ? (
-          <RxHamburgerMenu className='lg:hidden w-6 h-6 text-Dark hover:cursor-pointer' onClick={() => setIsHamBurgerMenuVisible(!isHamBurgerMenuVisible)} />
+          <RxHamburgerMenu className='md:hidden w-6 h-6 text-Dark hover:cursor-pointer' onClick={() => setIsHamBurgerMenuVisible(!isHamBurgerMenuVisible)} />
         ) : (
-          <RxCross1 className='lg:hidden w-6 h-6 text-Dark hover:cursor-pointer' onClick={() => setIsHamBurgerMenuVisible(!isHamBurgerMenuVisible)} />
+          <RxCross1 className='md:hidden w-6 h-6 text-Dark hover:cursor-pointer' onClick={() => setIsHamBurgerMenuVisible(!isHamBurgerMenuVisible)} />
         )}
 
-        {userDetails?.isUser && <ProfileCard />}
+        {userDetails?.isUser && <ProfileCard place="navbar" />}
       </div>
 
 
