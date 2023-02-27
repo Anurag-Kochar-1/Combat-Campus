@@ -5,8 +5,6 @@ import { Montserrat, Open_Sans } from "next/font/google"
 import { onAuthChanged } from '@/service/Auth/AuthService'
 import AppContextProvider, { AppContext, IAppContextType } from '@/context/AppContext'
 import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '@/firebaseConfig'
-
 
 export const metadata = {
   title: 'Combat Campus',
@@ -36,6 +34,7 @@ export default function RootLayout({
 
     <html lang="en" className={` ${montserrat.variable} ${open_sans.variable} `
     }>
+
       <body>
         <AppContextProvider>
           {children}

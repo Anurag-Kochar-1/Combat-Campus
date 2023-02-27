@@ -28,7 +28,7 @@ export default async function Home() {
 
 
   return (
-    <main className='w-full mt-[5rem] flex flex-col items-center justify-start bg-cover bg-no-repeat bg-fixed bg-center'
+    <main className='w-full mt-[5rem] flex flex-col items-center justify-start bg-cover bg-no-repeat bg-fixed bg-center bg-brand'
       style={{ backgroundImage: `url(${`https://cdn.wallpapersafari.com/72/81/Mp7EhK.jpg`})` }}
     >
       <NavBar place='home' />

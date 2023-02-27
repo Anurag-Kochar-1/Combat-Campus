@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import ClassCard from '../ClassCard/ClassCard'
-import bg1 from "../../public/images/BGs/bg2.jpg"
 
 
 function ClassesContainer({ classes }: { classes: any }) {

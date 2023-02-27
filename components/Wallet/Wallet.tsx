@@ -19,7 +19,7 @@ const Wallet = () => {
         <Button
             className="hidden md:inline-block"
         >
-            Wallet - 100 Bharat Coins
+            Wallet - 100 Combat Coins
         </Button >
 
     )

@@ -5,7 +5,7 @@ import SearchBar from '../SearchBar/SearchBar'
 const Leaderboard = ({ leaderBoardData }: { leaderBoardData: any }) => {
     return (
         <section className='w-[90%] flex flex-col justify-start items-center space-x-2 py-10'>
-            <h3 className='text-4xl text-black font-montserrat font-bold text-center'> Top Learners</h3>
+            <h3 className='text-5xl text-white font-montserrat font-bold text-center'> Top Learners</h3>
             <SearchBar />
 
 
@@ -31,7 +31,7 @@ const Leaderboard = ({ leaderBoardData }: { leaderBoardData: any }) => {
                             <p className='font-open_sans text-base font-medium text-black'> {user?.userName} </p>
 
                             <div className='flex justify-start items-center space-x-1'>
-                                <span> {user?.userCoins} Bharat Coins </span>
+                                <span> {user?.userCoins} Combat Coins </span>
                             </div>
                         </div>
                     )
