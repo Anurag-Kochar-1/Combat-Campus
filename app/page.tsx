@@ -5,6 +5,7 @@ import { collection, doc, getDocs, limit, orderBy, query } from 'firebase/firest
 import { db } from '@/firebaseConfig'
 import Leaderboard from '@/components/Leaderboard/Leaderboard'
 import bg1 from "../public/images/BGs/bg2.jpg"
+import Footer from '@/components/Footer/Footer'
 
 async function getClasses() {
   const classesCollectionRef = collection(db, `/subjects/indianArmy1/classes`)
@@ -15,7 +16,7 @@ async function getClasses() {
 }
 
 async function getLeaderboardData() {
-  const leaderboardQuery = query(collection(db, 'users'), orderBy("userCoins", "desc"), limit(20))
+  const leaderboardQuery = query(collection(db, 'users'), orderBy("userCoins", "desc"), limit(5))
   const res = await getDocs(leaderboardQuery)
   const data = res?.docs?.map(doc => doc.data())
   return data
@@ -34,6 +35,7 @@ export default async function Home() {
       <NavBar place='home' />
       <ClassesContainer classes={classes} />
       <Leaderboard leaderBoardData={leaderBoardData} />
+      <Footer />
     </main>
   )
 }
