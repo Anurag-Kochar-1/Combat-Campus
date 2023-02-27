@@ -18,13 +18,7 @@ const TrainingModel = () => {
     const [score, setScore] = useState<number>(0)
     const [isTestCompleted, setIsTestCompleted] = useState<boolean>(false)
 
-    async function getTrainingTest() {
-        const trainingTestDocRef = doc(db, `/subjects/indianArmy1/classes/JD7UPZr1r7pR6YyKxHjL/tests/eXEDJZMrRhLlYyAiezft`)
-        const res = await getDoc(trainingTestDocRef)
-        setTrainingTestData(res?.data())
-        console.log(`setTrainingTestData `)
-        console.log(res?.data())
-    }
+    
 
 
     const nextQuestion = () => {
@@ -68,26 +62,24 @@ const TrainingModel = () => {
 
     }
 
-    useEffect(() => {
-        let timerIntervalFunc: any;
+    // useEffect(() => {
+    //     let timerIntervalFunc: any;
 
-        timerIntervalFunc = setInterval(() => {
-            if (isTestModalOpen && timer != 0) setTimer(timer - 1)
-            if (isTestModalOpen && timer == 0) {
-                if (currentQuestionNumber != trainingTestData?.questions.length - 1) {
-                    setCurrentQuestionNumber(currentQuestionNumber + 1)
-                    setTimer(100)
-                }
-            }
-        }, 1000)
+    //     timerIntervalFunc = setInterval(() => {
+    //         if (isTestModalOpen && timer != 0) setTimer(timer - 1)
+    //         if (isTestModalOpen && timer == 0) {
+    //             if (currentQuestionNumber != trainingTestData?.questions.length - 1) {
+    //                 setCurrentQuestionNumber(currentQuestionNumber + 1)
+    //                 setTimer(100)
+    //             }
+    //         }
+    //     }, 1000)
 
-        return () => clearInterval(timerIntervalFunc)
+    //     return () => clearInterval(timerIntervalFunc)
 
-    })
+    // })
 
-    useEffect(() => {
-        getTrainingTest()
-    }, [])
+   
 
 
     return (
@@ -99,7 +91,7 @@ const TrainingModel = () => {
 
             {isTrainingModelOpen && (
                 <div className='z-50 fixed inset-0 w-full h-full bg-black flex justify-center items-center'>
-                    <div className='z-30 w-[90%] h-[80vh] lg:w-[80%] lg:h-[80vh] bg-light rounded-md flex flex-col items-center justify-start overflow-x-hidden overflow-y-scroll'>
+                    <div className='z-30 w-[90%] h-[80vh] lg:w-[80%] lg:h-[80vh] bg-light rounded-md flex flex-col items-center justify-start overflow-x-hidden overflow-y-auto'>
                         <div className='w-full h-16 flex justify-between items-center bg-brand rounded-tr-md rounded-tl-md px-5'>
                             <span> {null} </span>
                             <p className='text-xl text-white font-nunito font-semibold'> Timer : {`${timer} seconds`} </p>
@@ -141,7 +133,15 @@ const TrainingModel = () => {
                                 ) : (
                                     <button
                                         onClick={() => {
-                                            nextQuestion()
+                                            if (optionChosen) {
+                                                nextQuestion()
+                                            } else if (!optionChosen) {
+                                                const notify = () => toast(`Choose an Option`, {
+                                                    duration: 2000,
+                                                    icon: '👏',
+                                                });
+                                                notify()
+                                            }
                                         }}
                                         type='button'
                                         title='next'

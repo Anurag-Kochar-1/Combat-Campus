@@ -38,7 +38,7 @@ export async function SignInWithGoogleFunction() {
         }
 
     } catch (error) {
-        alert(error)
+        console.log(error)
     }
 
 }

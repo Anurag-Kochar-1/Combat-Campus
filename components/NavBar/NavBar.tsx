@@ -8,10 +8,13 @@ import { onAuthChanged, SignInWithGoogleFunction, signOutUser } from "@/service/
 import { AppContext, IAppContextType } from "@/context/AppContext"
 import Link from "next/link"
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx"
-import HamBurgerMenu from "../HamBurgerMenu/HamBurgerMenu"
 import ProfileCard from "../ProfileCard/ProfileCard"
 import Wallet from "../Wallet/Wallet"
 import { useRouter } from "next/navigation"
+import dynamic from "next/dynamic"
+// import HamBurgerMenu from "../HamBurgerMenu/HamBurgerMenu"
+const HamBurgerMenu = dynamic(() => import('../HamBurgerMenu/HamBurgerMenu'))
+
 
 interface IProps {
   place: string
