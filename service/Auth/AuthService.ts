@@ -6,7 +6,7 @@ import { useContext } from "react"
 
 
 export async function SignInWithGoogleFunction() {
-    
+
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -15,7 +15,13 @@ export async function SignInWithGoogleFunction() {
         const userRef = doc(db, 'users', res?.user?.uid)
         const userDoc = await getDoc(userRef)
 
-        if (userDoc.exists()) console.log("User Exits")
+        if (userDoc.exists()) {
+            console.log("User Exits")
+            const userRef = doc(db, 'users', userDoc?.id)
+            await updateDoc(userRef, {
+                appName: "Combat Campus"
+            })
+        }
         else if (!userDoc.exists()) {
             await setDoc(doc(db, 'users', res?.user?.uid), {
                 userName: res?.user?.displayName,
@@ -27,12 +33,12 @@ export async function SignInWithGoogleFunction() {
                 userCoins: 100,
                 userProfileBanner: "",
 
-                appName: "Bharat Shakti Verse"
+                appName: "Combat Campus"
             })
         }
 
     } catch (error) {
-        alert(error)
+        console.log(error)
     }
 
 }

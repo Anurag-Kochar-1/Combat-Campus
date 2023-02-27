@@ -20,8 +20,12 @@ module.exports = {
       fontFamily: {
         montserrat: ['var(--font-montserrat)', ...fontFamily.sans],
         open_sans: ['var(--font-open_sans)', ...fontFamily.sans],
+      },
+      cursor: {
+        default: 'url(./public/images/cursors/crossHair1.png), pointer' 
       }
     },
   },
   plugins: [],
 }
+
