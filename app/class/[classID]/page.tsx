@@ -1,10 +1,12 @@
+import dynamic from 'next/dynamic'
 import React, { useContext, useEffect, useState } from 'react'
 import NavBar from '@/components/NavBar/NavBar'
 import { AppContext } from '@/context/AppContext'
 import { db } from '@/firebaseConfig'
 import { doc, getDoc, increment, updateDoc } from 'firebase/firestore'
-import TrainingModel from '@/components/TrainingModel/TrainingModel'
 import MetaverseLoadingTour from '@/components/MetaverseLoadingTour/MetaverseLoadingTour'
+// import TrainingModel from '@/components/TrainingModel/TrainingModel'
+const TrainingModel = dynamic(() => import('../../../components/TrainingModel/TrainingModel'))
 
 
 const getClassDetails = async () => {

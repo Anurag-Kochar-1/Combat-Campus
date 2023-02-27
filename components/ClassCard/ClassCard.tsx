@@ -10,8 +10,8 @@ import { toast, Toaster } from 'react-hot-toast'
 const ClassCard = ({ classObject }: { classObject: any }) => {
   const { userDetails } = useContext(AppContext)
   const rotuer = useRouter()
-  const notify = () => toast(`LOADING.......`, {
-    duration: 3000,
+  const notify = () => toast(`LOADING.....`, {
+    duration: 6000,
     icon: '✅',
   });
   return (
