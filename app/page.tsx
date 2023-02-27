@@ -6,6 +6,7 @@ import { db } from '@/firebaseConfig'
 import Leaderboard from '@/components/Leaderboard/Leaderboard'
 import bg1 from "../public/images/BGs/bg2.jpg"
 import Footer from '@/components/Footer/Footer'
+import EarnCoinsSection from '@/components/EarnCoinsSection/EarnCoinsSection'
 
 async function getClasses() {
   const classesCollectionRef = collection(db, `/subjects/indianArmy1/classes`)
@@ -35,6 +36,7 @@ export default async function Home() {
       <NavBar place='home' />
       <ClassesContainer classes={classes} />
       <Leaderboard leaderBoardData={leaderBoardData} />
+      <EarnCoinsSection />
       <Footer />
     </main>
   )
