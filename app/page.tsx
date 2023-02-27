@@ -4,6 +4,7 @@ import ClassesContainer from '@/components/ClassesContainer/ClassesContainer'
 import { collection, doc, getDocs, limit, orderBy, query } from 'firebase/firestore'
 import { db } from '@/firebaseConfig'
 import Leaderboard from '@/components/Leaderboard/Leaderboard'
+import bg1 from "../public/images/BGs/bg2.jpg"
 
 async function getClasses() {
   const classesCollectionRef = collection(db, `/subjects/indianArmy1/classes`)
@@ -27,7 +28,9 @@ export default async function Home() {
 
 
   return (
-    <main className='w-full mt-[5rem] flex flex-col items-center justify-start'>
+    <main className='w-full mt-[5rem] flex flex-col items-center justify-start bg-cover bg-no-repeat bg-fixed bg-center'
+      style={{ backgroundImage: `url(${`https://cdn.wallpapersafari.com/72/81/Mp7EhK.jpg`})` }}
+    >
       <NavBar place='home' />
       <ClassesContainer classes={classes} />
       <Leaderboard leaderBoardData={leaderBoardData} />

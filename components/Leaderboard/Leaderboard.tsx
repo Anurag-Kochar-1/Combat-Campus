@@ -20,7 +20,7 @@ const Leaderboard = ({ leaderBoardData }: { leaderBoardData: any }) => {
                     return (
                         <div
                             key={user?.userID}
-                            className='w-full md:w-[60%] flex justify-between items-center text-center p-4 m-2 border-2 border-brand rounded-lg'>
+                            className='bg-white  w-full md:w-[60%] flex justify-between items-center text-center p-4 m-2 border-2 border-brand rounded-lg'>
                             <Image
                                 src={user?.displayPicture as string}
                                 alt="dp"
