@@ -27,7 +27,7 @@ export async function SignInWithGoogleFunction() {
                 userCoins: 100,
                 userProfileBanner: "",
 
-                appName: "Bharat Shakti Verse"
+                appName: "Combat Campus"
             })
         }
 
