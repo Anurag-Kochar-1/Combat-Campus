@@ -1,8 +1,16 @@
 "use client"
+import { usePathname, useRouter } from 'next/navigation';
 import React from 'react'
 import { toast, Toaster } from 'react-hot-toast';
 
 const ProductCard = ({ product }: { product: any }) => {
+    const router = useRouter()
+    const pathname = usePathname()
+    const notify = () => toast(`Not Enough Coins`, {
+        duration: 3000,
+        icon: '😢',
+    });
+
     return (
         <>
             <Toaster
@@ -11,11 +19,8 @@ const ProductCard = ({ product }: { product: any }) => {
             />
             <div
                 onClick={() => {
-                    const notify = () => toast(`Not Enough Coins`, {
-                        duration: 3000,
-                        icon: '😢',
-                    });
-                    notify()
+                    if (pathname === '/') router.push('/shop')
+                    else notify()
                 }}
                 className="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
                 <div className="overflow-x-hidden rounded-2xl relative">

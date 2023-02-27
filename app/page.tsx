@@ -7,6 +7,7 @@ import Leaderboard from '@/components/Leaderboard/Leaderboard'
 import bg1 from "../public/images/BGs/bg2.jpg"
 import Footer from '@/components/Footer/Footer'
 import EarnCoinsSection from '@/components/EarnCoinsSection/EarnCoinsSection'
+import RewardsSection from '@/components/RewardsSection/RewardsSection'
 
 async function getClasses() {
   const classesCollectionRef = collection(db, `/subjects/indianArmy1/classes`)
@@ -37,6 +38,7 @@ export default async function Home() {
       <ClassesContainer classes={classes} />
       <Leaderboard leaderBoardData={leaderBoardData} />
       <EarnCoinsSection />
+      <RewardsSection />
       <Footer />
     </main>
   )
