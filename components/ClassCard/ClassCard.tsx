@@ -40,11 +40,11 @@ const ClassCard = ({ classObject }: { classObject: any }) => {
             alt="image"
             width={300}
             height={300}
-            className='z-10 absolute w-full h-full object-cover bg-blend-multiply rounded-md'
+            className='z-10 absolute w-full h-full object-cover blur-sm hover:blur-none rounded-md'
             draggable="false"
           />
         )}
-        <h3 className='z-10 text-white font-semibold font-montserrat text-2xl p-4'> {classObject?.className} </h3>
+        <h3 className='z-10 text-white font-bold font-montserrat text-2xl lg:text-4xl p-4'> {classObject?.className} </h3>
       </div>
     </>
   )
