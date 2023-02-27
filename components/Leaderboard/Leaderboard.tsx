@@ -20,18 +20,26 @@ const Leaderboard = ({ leaderBoardData }: { leaderBoardData: any }) => {
                     return (
                         <div
                             key={user?.userID}
-                            className='bg-white  w-full md:w-[60%] flex justify-between items-center text-center p-4 m-2 border-2 border-brand rounded-lg'>
+                            className='bg-white w-full md:w-[60%] flex justify-between items-center text-center p-4 m-2 border-2 border-brand rounded-lg'>
                             <Image
                                 src={user?.displayPicture as string}
                                 alt="dp"
                                 width={150}
                                 height={150}
+                                unoptimized
                                 className="hidden sm:inline-block w-9 h-9 rounded-full"
                             />
-                            <p className='font-open_sans text-base font-medium text-black'> {user?.userName} </p>
+                            <p className='font-montserrat text-base font-medium text-black'> {user?.userName} </p>
 
-                            <div className='flex justify-start items-center space-x-1'>
-                                <span> {user?.userCoins} Combat Coins </span>
+                            <div className='flex justify-start items-center space-x-2'>
+                                <Image
+                                    src={`/coin.png`}
+                                    alt={'goldCoin'}
+                                    width={100}
+                                    height={100}
+                                    className="w-8 h-8"
+                                />
+                                <span className='font-montserrat font-medium'> {user?.userCoins} Combat Coins </span>
                             </div>
                         </div>
                     )
